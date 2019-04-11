@@ -415,6 +415,7 @@ public class ContactsProvider {
     }
 
     private static class Contact {
+        private String lookupKey;
         private String contactId;
         private String rawContactId;
         private String displayName;
@@ -455,6 +456,7 @@ public class ContactsProvider {
             contact.putString("note", note);
             contact.putBoolean("hasThumbnail", this.hasPhoto);
             contact.putString("thumbnailPath", photoUri == null ? "" : photoUri);
+            contact.putString("uri", lookupKey + "/" + contactId);
 
             WritableArray phoneNumbers = Arguments.createArray();
             for (Item item : phones) {
